@@ -26,7 +26,7 @@ def find_paragraphs(document):
 
 
 # Example usage
-document = docx.Document('Giulio Arpaia.doc')
+document = docx.Document('test1.docx')
 paragraphs = find_paragraphs(document)
 
 # Displaying the results
