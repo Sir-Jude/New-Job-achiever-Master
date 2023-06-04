@@ -1,7 +1,7 @@
 import docx
 import json
 
-document = docx.Document('docx/cv-template-1.docx')
+document = docx.Document('docx/cv-template-2.docx')
 
 def replace_by_style(element, info):
 
