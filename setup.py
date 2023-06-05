@@ -36,7 +36,7 @@ def setup_db():
                         date_start DATE,
                         date_end DATE,
                         profile_id INTEGER NOT NULL,
-                        FOREIGN KEY(profile_id) REFERENCES profiles(id)
+                        FOREIGN KEY(profile_id) REFERENCES profiles(id) ON DELETE CASCADE
                     )''')
 
     # Create education table
@@ -48,7 +48,7 @@ def setup_db():
                         date_start DATE,
                         date_end DATE,
                         profile_id INTEGER NOT NULL,
-                        FOREIGN KEY(profile_id) REFERENCES profiles(id)
+                        FOREIGN KEY(profile_id) REFERENCES profiles(id) ON DELETE CASCADE
                     )''')
 
     # Create hobbies table
@@ -56,7 +56,7 @@ def setup_db():
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
                         hobby VARCHAR(250),
                         profile_id INTEGER NOT NULL,
-                        FOREIGN KEY(profile_id) REFERENCES profiles(id)
+                        FOREIGN KEY(profile_id) REFERENCES profiles(id) ON DELETE CASCADE
                     )''')
 
     # Create skills table
@@ -64,7 +64,7 @@ def setup_db():
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
                         skill VARCHAR(250),
                         profile_id INTEGER NOT NULL,
-                        FOREIGN KEY(profile_id) REFERENCES profiles(id)
+                        FOREIGN KEY(profile_id) REFERENCES profiles(id) ON DELETE CASCADE
                     )''')
 
     # Create applications table
@@ -90,8 +90,8 @@ def setup_db():
                         date_sending DATETIME,
                         template_id INTEGER NOT NULL,
                         profile_id INTEGER NOT NULL,
-                        FOREIGN KEY(template_id) REFERENCES templates(id),
-                        FOREIGN KEY(profile_id) REFERENCES profiles(id)
+                        FOREIGN KEY(template_id) REFERENCES templates(id) ON DELETE CASCADE
+                        FOREIGN KEY(profile_id) REFERENCES profiles(id) ON DELETE CASCADE
                     )''')
 
     # Commit the changes
