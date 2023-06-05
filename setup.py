@@ -90,7 +90,7 @@ def setup_db():
                         date_sending DATETIME,
                         template_id INTEGER NOT NULL,
                         profile_id INTEGER NOT NULL,
-                        FOREIGN KEY(template_id) REFERENCES templates(id) ON DELETE CASCADE
+                        FOREIGN KEY(template_id) REFERENCES templates(id) ON DELETE CASCADE,
                         FOREIGN KEY(profile_id) REFERENCES profiles(id) ON DELETE CASCADE
                     )''')
 
