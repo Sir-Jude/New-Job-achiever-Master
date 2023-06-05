@@ -6,7 +6,7 @@ def setup_db():
     c = conn.cursor()
 
     # Create users table
-    c.execute('''CREATE TABLE IF NOT EXISTS profiles (
+    c.execute('''CREATE TABLE IF NOT EXISTS profile (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
                         name VARCHAR(100),
                         surname VARCHAR(60),
@@ -17,15 +17,15 @@ def setup_db():
                         email_pass VARCHAR(100),
                         address VARCHAR(200),
                         user_language VARCHAR(60) NOT NULL DEFAULT "english"
-                    )''')
+                    );''')
     
     # Create templates table
-    c.execute('''CREATE TABLE IF NOT EXISTS templates (
+    c.execute('''CREATE TABLE IF NOT EXISTS template (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
                         name VARCHAR(250),
                         file VARCHAR(250),
                         type CHECK(type IN ("cv","letter")) NOT NULL DEFAULT "cv"
-                    )''')
+                    );''')
 
     # Create experience table
     c.execute('''CREATE TABLE IF NOT EXISTS experience (
@@ -36,8 +36,8 @@ def setup_db():
                         date_start DATE,
                         date_end DATE,
                         profile_id INTEGER NOT NULL,
-                        FOREIGN KEY(profile_id) REFERENCES profiles(id) ON DELETE CASCADE
-                    )''')
+                        FOREIGN KEY(profile_id) REFERENCES profile(id) ON DELETE CASCADE
+                    );''')
 
     # Create education table
     c.execute('''CREATE TABLE IF NOT EXISTS education (
@@ -48,27 +48,27 @@ def setup_db():
                         date_start DATE,
                         date_end DATE,
                         profile_id INTEGER NOT NULL,
-                        FOREIGN KEY(profile_id) REFERENCES profiles(id) ON DELETE CASCADE
-                    )''')
+                        FOREIGN KEY(profile_id) REFERENCES profile(id) ON DELETE CASCADE
+                    );''')
 
     # Create hobbies table
-    c.execute('''CREATE TABLE IF NOT EXISTS hobbies (
+    c.execute('''CREATE TABLE IF NOT EXISTS hobby (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
                         hobby VARCHAR(250),
                         profile_id INTEGER NOT NULL,
-                        FOREIGN KEY(profile_id) REFERENCES profiles(id) ON DELETE CASCADE
-                    )''')
+                        FOREIGN KEY(profile_id) REFERENCES profile(id) ON DELETE CASCADE
+                    );''')
 
     # Create skills table
-    c.execute('''CREATE TABLE IF NOT EXISTS skills (
+    c.execute('''CREATE TABLE IF NOT EXISTS skill (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
                         skill VARCHAR(250),
                         profile_id INTEGER NOT NULL,
-                        FOREIGN KEY(profile_id) REFERENCES profiles(id) ON DELETE CASCADE
-                    )''')
+                        FOREIGN KEY(profile_id) REFERENCES profile(id) ON DELETE CASCADE
+                    );''')
 
     # Create applications table
-    c.execute('''CREATE TABLE IF NOT EXISTS applications (
+    c.execute('''CREATE TABLE IF NOT EXISTS application (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
                         language VARCHAR(60) NOT NULL DEFAULT "english",
                         job_position VARCHAR(250),
@@ -90,9 +90,9 @@ def setup_db():
                         date_sending DATETIME,
                         template_id INTEGER NOT NULL,
                         profile_id INTEGER NOT NULL,
-                        FOREIGN KEY(template_id) REFERENCES templates(id) ON DELETE CASCADE,
-                        FOREIGN KEY(profile_id) REFERENCES profiles(id) ON DELETE CASCADE
-                    )''')
+                        FOREIGN KEY(template_id) REFERENCES template(id) ON DELETE CASCADE,
+                        FOREIGN KEY(profile_id) REFERENCES profile(id) ON DELETE CASCADE
+                    );''')
 
     # Commit the changes
     conn.commit()
