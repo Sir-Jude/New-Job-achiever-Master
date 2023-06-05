@@ -7,7 +7,7 @@ def setup_db():
 
     # Create users table
     c.execute('''CREATE TABLE IF NOT EXISTS profile (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        profile_id INTEGER PRIMARY KEY AUTOINCREMENT,
                         name VARCHAR(100),
                         surname VARCHAR(60),
                         birthday DATE,
@@ -21,7 +21,7 @@ def setup_db():
     
     # Create templates table
     c.execute('''CREATE TABLE IF NOT EXISTS template (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        template_id INTEGER PRIMARY KEY AUTOINCREMENT,
                         name VARCHAR(250),
                         file VARCHAR(250),
                         type CHECK(type IN ("cv","letter")) NOT NULL DEFAULT "cv"
@@ -29,7 +29,7 @@ def setup_db():
 
     # Create experience table
     c.execute('''CREATE TABLE IF NOT EXISTS experience (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        experience_id INTEGER PRIMARY KEY AUTOINCREMENT,
                         title VARCHAR(200),
                         description TEXT,
                         company VARCHAR(100),
@@ -41,7 +41,7 @@ def setup_db():
 
     # Create education table
     c.execute('''CREATE TABLE IF NOT EXISTS education (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        education_id INTEGER PRIMARY KEY AUTOINCREMENT,
                         title VARCHAR(200),
                         description TEXT,
                         school VARCHAR(100),
@@ -53,7 +53,7 @@ def setup_db():
 
     # Create hobbies table
     c.execute('''CREATE TABLE IF NOT EXISTS hobby (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        hobby_id INTEGER PRIMARY KEY AUTOINCREMENT,
                         hobby VARCHAR(250),
                         profile_id INTEGER NOT NULL,
                         FOREIGN KEY(profile_id) REFERENCES profile(id) ON DELETE CASCADE
@@ -61,7 +61,7 @@ def setup_db():
 
     # Create skills table
     c.execute('''CREATE TABLE IF NOT EXISTS skill (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        skill_id INTEGER PRIMARY KEY AUTOINCREMENT,
                         skill VARCHAR(250),
                         profile_id INTEGER NOT NULL,
                         FOREIGN KEY(profile_id) REFERENCES profile(id) ON DELETE CASCADE
@@ -69,7 +69,7 @@ def setup_db():
 
     # Create applications table
     c.execute('''CREATE TABLE IF NOT EXISTS application (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        application_id INTEGER PRIMARY KEY AUTOINCREMENT,
                         language VARCHAR(60) NOT NULL DEFAULT "english",
                         job_position VARCHAR(250),
                         job_description TEXT,
@@ -90,8 +90,8 @@ def setup_db():
                         date_sending DATETIME,
                         template_id INTEGER NOT NULL,
                         profile_id INTEGER NOT NULL,
-                        FOREIGN KEY(template_id) REFERENCES template(id) ON DELETE CASCADE,
-                        FOREIGN KEY(profile_id) REFERENCES profile(id) ON DELETE CASCADE
+                        FOREIGN KEY(template_id) REFERENCES template(template_id) ON DELETE CASCADE,
+                        FOREIGN KEY(profile_id) REFERENCES profile(profile_id) ON DELETE CASCADE
                     );''')
 
     # Commit the changes
