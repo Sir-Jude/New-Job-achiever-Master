@@ -4,7 +4,6 @@ import subprocess
 start = True
 
 while start:
-    
     # Specify the folder path
     folder_path = "docx"
 
@@ -37,9 +36,11 @@ while start:
 
     start = False
 
+
 def convert_docx_to_pdf(docx_file_path, pdf_file_path):
-    subprocess.run(['unoconv', '-f', 'pdf', '-o', pdf_file_path, docx_file_path])
+    subprocess.run(["unoconv", "-f", "pdf", "-o", pdf_file_path, docx_file_path])
     print("Conversion successful!")
+
 
 # Specifing the input DOCX file path
 docx_path = "docx/cv-template-1.docx"
