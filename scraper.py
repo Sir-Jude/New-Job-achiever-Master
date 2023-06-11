@@ -39,7 +39,8 @@ def find_job():
 
     print('Created json file successfuly!')
 
-find_job()
+if __name__ == '__main__':
+    find_job()
 
 
 
