@@ -5,13 +5,13 @@ sg.theme("LightGrey2")
 menu = sg.vtop(
     sg.Column(
         layout=[
-            [sg.Button(button_text="Profile", key='-ButonProfile-', expand_x=True)],
-            [sg.Button(button_text="Experience", key='-ButonExperience-', expand_x=True)],
-            [sg.Button(button_text="Education", expand_x=True)],
-            [sg.Button(button_text="Hobbies", expand_x=True)],
-            [sg.Button(button_text="Skills", expand_x=True)],
-            [sg.Button(button_text="Jobs", expand_x=True)],
-            [sg.Button(button_text="Interviews", expand_x=True)],
+            [sg.Button(button_text="Profile", expand_x=True, key='-PROFILE-')],
+            [sg.Button(button_text="Experience", expand_x=True, key='-EXPERIENCE-')],
+            [sg.Button(button_text="Education", expand_x=True, key='-EDUCATION-')],
+            [sg.Button(button_text="Hobbies", expand_x=True, key='-HOBBIES-')],
+            [sg.Button(button_text="Skills", expand_x=True, key='-SKILLS-')],
+            [sg.Button(button_text="Jobs", expand_x=True, key='-JOBS-')],
+            [sg.Button(button_text="Interviews", expand_x=True, key='-INTERVIEWS-')]
         ], element_justification='left'
     )
 )
