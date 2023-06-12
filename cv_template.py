@@ -12,7 +12,7 @@ lines = [
     "(willing to relocate worldwide)",
     "Linkedin: giulio-arpaia-5b19b8149",
     "Email: giulio.arpaia@gmail.com",
-    "Mob: 0134567890"
+    "Mob: 0134567890",
 ]
 
 # Adjust page margins
@@ -25,22 +25,26 @@ for section in sections:
 
 # Create a table with one column and one row
 table = document.add_table(rows=1, cols=1)
-table.style = 'Table Grid'  # Apply table grid style
+table.style = "Table Grid"  # Apply table grid style
 table.alignment = WD_ALIGN_VERTICAL.CENTER  # Center-align the table on the page
 
 # Set cell properties
 cell = table.cell(0, 0)
 cell.width = Pt(400)  # Set width of the cell
-cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER  # Center-align the content vertically
+cell.vertical_alignment = (
+    WD_ALIGN_VERTICAL.CENTER
+)  # Center-align the content vertically
 
 # Add a paragraph to the cell
 paragraph = cell.add_paragraph()
 paragraph_format = paragraph.paragraph_format
-paragraph_format.alignment = WD_ALIGN_VERTICAL.CENTER  # Center-align the text within the cell vertically
+paragraph_format.alignment = (
+    WD_ALIGN_VERTICAL.CENTER
+)  # Center-align the text within the cell vertically
 
 for i, line in enumerate(lines):
     run = paragraph.add_run(line)
-    run.font.name = 'Arial'
+    run.font.name = "Arial"
     if i == 0:
         run.bold = True
         run.font.size = Pt(18)
@@ -49,11 +53,15 @@ for i, line in enumerate(lines):
     paragraph.add_run().add_break()  # Add line break after each line
 
 # Add shading
-shading_element = parse_xml('<w:shd {} w:fill="{}"/>'.format(nsdecls('w'), 'DCDCDC'))
+shading_element = parse_xml('<w:shd {} w:fill="{}"/>'.format(nsdecls("w"), "DCDCDC"))
 cell._element.get_or_add_tcPr().append(shading_element)
 
 # Add borders
-border_element = parse_xml('<w:tcBorders {} w:sz="{}" w:val="single" w:space="0" w:color="auto"/>'.format(nsdecls('w'), Pt(1)))
+border_element = parse_xml(
+    '<w:tcBorders {} w:sz="{}" w:val="single" w:space="0" w:color="auto"/>'.format(
+        nsdecls("w"), Pt(1)
+    )
+)
 cell._element.get_or_add_tcPr().append(border_element)
 
 document.save("test.docx")

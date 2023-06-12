@@ -1,10 +1,10 @@
 import docx
 import json
 
-document = docx.Document('docx/cv-template-2.docx')
+document = docx.Document("docx/cv-template-2.docx")
+
 
 def replace_by_style(element, info):
-
     # Iterate through all paragraphs directly in the document body
     for paragraph in document.paragraphs:
         if paragraph.style.name == element:
@@ -17,6 +17,7 @@ def replace_by_style(element, info):
                 for paragraph in cell.paragraphs:
                     if paragraph.style.name == element:
                         paragraph.text = info
+
 
 with open("json/candidate.json", "r") as file:
     data = json.load(file)

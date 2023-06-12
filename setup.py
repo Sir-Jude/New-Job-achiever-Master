@@ -1,12 +1,14 @@
 import sqlite3
 
+
 def setup_db():
     # create databank if not exists
-    conn = sqlite3.connect('databank.db')
+    conn = sqlite3.connect("databank.db")
     c = conn.cursor()
 
     # Create users table
-    c.execute('''CREATE TABLE IF NOT EXISTS profile (
+    c.execute(
+        """CREATE TABLE IF NOT EXISTS profile (
                         profile_id INTEGER PRIMARY KEY AUTOINCREMENT,
                         name VARCHAR(100),
                         surname VARCHAR(60),
@@ -17,18 +19,22 @@ def setup_db():
                         email_pass VARCHAR(100),
                         address VARCHAR(200),
                         user_language VARCHAR(60) NOT NULL DEFAULT "english"
-                    );''')
-    
+                    );"""
+    )
+
     # Create templates table
-    c.execute('''CREATE TABLE IF NOT EXISTS template (
+    c.execute(
+        """CREATE TABLE IF NOT EXISTS template (
                         template_id INTEGER PRIMARY KEY AUTOINCREMENT,
                         name VARCHAR(250),
                         file VARCHAR(250),
                         type CHECK(type IN ("cv","letter")) NOT NULL DEFAULT "cv"
-                    );''')
+                    );"""
+    )
 
     # Create experience table
-    c.execute('''CREATE TABLE IF NOT EXISTS experience (
+    c.execute(
+        """CREATE TABLE IF NOT EXISTS experience (
                         experience_id INTEGER PRIMARY KEY AUTOINCREMENT,
                         title VARCHAR(200),
                         description TEXT,
@@ -37,10 +43,12 @@ def setup_db():
                         date_end DATE,
                         profile_id INTEGER NOT NULL,
                         FOREIGN KEY(profile_id) REFERENCES profile(id) ON DELETE CASCADE
-                    );''')
+                    );"""
+    )
 
     # Create education table
-    c.execute('''CREATE TABLE IF NOT EXISTS education (
+    c.execute(
+        """CREATE TABLE IF NOT EXISTS education (
                         education_id INTEGER PRIMARY KEY AUTOINCREMENT,
                         title VARCHAR(200),
                         description TEXT,
@@ -49,26 +57,32 @@ def setup_db():
                         date_end DATE,
                         profile_id INTEGER NOT NULL,
                         FOREIGN KEY(profile_id) REFERENCES profile(id) ON DELETE CASCADE
-                    );''')
+                    );"""
+    )
 
     # Create hobbies table
-    c.execute('''CREATE TABLE IF NOT EXISTS hobby (
+    c.execute(
+        """CREATE TABLE IF NOT EXISTS hobby (
                         hobby_id INTEGER PRIMARY KEY AUTOINCREMENT,
                         hobby VARCHAR(250),
                         profile_id INTEGER NOT NULL,
                         FOREIGN KEY(profile_id) REFERENCES profile(id) ON DELETE CASCADE
-                    );''')
+                    );"""
+    )
 
     # Create skills table
-    c.execute('''CREATE TABLE IF NOT EXISTS skill (
+    c.execute(
+        """CREATE TABLE IF NOT EXISTS skill (
                         skill_id INTEGER PRIMARY KEY AUTOINCREMENT,
                         skill VARCHAR(250),
                         profile_id INTEGER NOT NULL,
                         FOREIGN KEY(profile_id) REFERENCES profile(id) ON DELETE CASCADE
-                    );''')
+                    );"""
+    )
 
     # Create applications table
-    c.execute('''CREATE TABLE IF NOT EXISTS application (
+    c.execute(
+        """CREATE TABLE IF NOT EXISTS application (
                         application_id INTEGER PRIMARY KEY AUTOINCREMENT,
                         language VARCHAR(60) NOT NULL DEFAULT "english",
                         job_position VARCHAR(250),
@@ -92,7 +106,8 @@ def setup_db():
                         profile_id INTEGER NOT NULL,
                         FOREIGN KEY(template_id) REFERENCES template(template_id) ON DELETE CASCADE,
                         FOREIGN KEY(profile_id) REFERENCES profile(profile_id) ON DELETE CASCADE
-                    );''')
+                    );"""
+    )
 
     # Commit the changes
     conn.commit()

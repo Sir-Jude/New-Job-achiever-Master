@@ -1,18 +1,24 @@
 import PySimpleGUI as sg
+
 sg.theme("LightGrey2")
 
 # Defining the left menu
 menu = sg.vtop(
     sg.Column(
         layout=[
-            [sg.Button(button_text="Profile", expand_x=True, disabled=True, key='-PROFILE-')],
-            [sg.Button(button_text="Experience", expand_x=True, key='-EXPERIENCE-')],
-            [sg.Button(button_text="Education", expand_x=True, key='-EDUCATION-')],
-            [sg.Button(button_text="Hobbies", expand_x=True, key='-HOBBIES-')],
-            [sg.Button(button_text="Skills", expand_x=True, key='-SKILLS-')],
-            [sg.Button(button_text="Jobs", expand_x=True, key='-JOBS-')],
-            [sg.Button(button_text="Interviews", expand_x=True, key='-INTERVIEWS-')]
-        ], element_justification='left'
+            [
+                sg.Button(
+                    button_text="Profile", expand_x=True, disabled=True, key="-PROFILE-"
+                )
+            ],
+            [sg.Button(button_text="Experience", expand_x=True, key="-EXPERIENCE-")],
+            [sg.Button(button_text="Education", expand_x=True, key="-EDUCATION-")],
+            [sg.Button(button_text="Hobbies", expand_x=True, key="-HOBBIES-")],
+            [sg.Button(button_text="Skills", expand_x=True, key="-SKILLS-")],
+            [sg.Button(button_text="Jobs", expand_x=True, key="-JOBS-")],
+            [sg.Button(button_text="Interviews", expand_x=True, key="-INTERVIEWS-")],
+        ],
+        element_justification="left",
     )
 )
 
@@ -20,28 +26,34 @@ menu = sg.vtop(
 # Defining the options for profiles combo box
 profiles = ["Adrian George Radu", "Profile 2", "Profile 3"]
 # Defining the top frame
-top_profile = sg.Column([
-            [
-                sg.Column(
+top_profile = sg.Column(
+    [
+        [
+            sg.Column(
+                [
                     [
-                        [
-                            sg.Image(filename="images/icons8-document-writer-50.png"),
-                        ]
-                    ], element_justification='left'
-                ),
-                sg.Column(
+                        sg.Image(filename="images/icons8-document-writer-50.png"),
+                    ]
+                ],
+                element_justification="left",
+            ),
+            sg.Column(
+                [
                     [
-                        [
-                            sg.Text("Select Profile:"),
-                            sg.Combo(profiles, key="-Profiles-", readonly=True),
-                            sg.Button("New Profile"),
-                            sg.Button("Delete profile"),
-                        ]
-                    ], element_justification='right', expand_x=True
-                ),
-            ],
-        ], key="-TopProfile-", visible=True
-    )
+                        sg.Text("Select Profile:"),
+                        sg.Combo(profiles, key="-Profiles-", readonly=True),
+                        sg.Button("New Profile"),
+                        sg.Button("Delete profile"),
+                    ]
+                ],
+                element_justification="right",
+                expand_x=True,
+            ),
+        ],
+    ],
+    key="-TopProfile-",
+    visible=True,
+)
 # Defining the content
 content_profile = sg.Column(
     [
@@ -54,34 +66,38 @@ content_profile = sg.Column(
         [sg.Text("E-mail pass:"), sg.Input(key="-EmailPass-")],
         [sg.Text("Address:"), sg.Input(key="-Address-")],
         [sg.Text("Language:"), sg.Input(key="-Language-")],
-        [sg.Text("Photo:"), sg.Input(size=(33, 1), key='-FILE-'), sg.FileBrowse()],
+        [sg.Text("Photo:"), sg.Input(size=(33, 1), key="-FILE-"), sg.FileBrowse()],
         [sg.Button("Save")],
     ],
-    element_justification="right", expand_x=True, key="-Profile-", visible=True
+    element_justification="right",
+    expand_x=True,
+    key="-Profile-",
+    visible=True,
 )
 
 # EXPERIENCE LAYOUT
 # Defining the top frame
-top_experience = sg.Column([
-            [
-                sg.Column(
+top_experience = sg.Column(
+    [
+        [
+            sg.Column(
+                [
                     [
-                        [
-                            sg.Image(filename="images/icons8-populärer-mann-50.png"),
-                        ]
-                    ], element_justification='left'
-                ),
-                sg.Column(
-                    [
-                        [
-                            sg.Text("Experience of Adrian George Radu")
-                        ]
-                    ], element_justification='right', expand_x=True
-                ),
-            ],
+                        sg.Image(filename="images/icons8-populärer-mann-50.png"),
+                    ]
+                ],
+                element_justification="left",
+            ),
+            sg.Column(
+                [[sg.Text("Experience of Adrian George Radu")]],
+                element_justification="right",
+                expand_x=True,
+            ),
         ],
-        key="-TopExperience-", visible=False
-    )
+    ],
+    key="-TopExperience-",
+    visible=False,
+)
 
 # Defining the content
 content_experience = sg.Column(
@@ -97,5 +113,8 @@ content_experience = sg.Column(
         [sg.Text("Language:"), sg.Input(key="-Language-")],
         [sg.Button("Save")],
     ],
-    element_justification="right", expand_x=True, key="-Experience-", visible=False
+    element_justification="right",
+    expand_x=True,
+    key="-Experience-",
+    visible=False,
 )

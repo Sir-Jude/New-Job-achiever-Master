@@ -1,5 +1,6 @@
 import docx
 
+
 def find_paragraphs(document):
     found_paragraphs = []
 
@@ -26,11 +27,11 @@ def find_paragraphs(document):
 
 
 # Example usage
-document = docx.Document('cv-template-1.docx')
+document = docx.Document("cv-template-1.docx")
 paragraphs = find_paragraphs(document)
 
 # Displaying the results
 for style, text, parent_element in paragraphs:
     print(f"Style: {style}\nText: {text}\nParent Element: {parent_element}\n")
 
-document.save('test2.docx')
+document.save("test2.docx")
