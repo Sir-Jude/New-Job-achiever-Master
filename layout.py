@@ -41,7 +41,7 @@ top_profile = sg.Column(
                 [
                     [
                         sg.Text("Select Profile:"),
-                        sg.Combo(profiles, key="-Profiles-", readonly=True),
+                        sg.Combo(profiles, key="Combo-Profiles", readonly=True),
                         sg.Button(button_text="New Profile", key="Button-New-Profile"),
                         sg.Button(button_text="Delete Profile", key="Button-Delete-Profile"),
                     ]
