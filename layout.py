@@ -5,7 +5,7 @@ sg.theme("LightGrey2")
 menu = sg.vtop(
     sg.Column(
         layout=[
-            [sg.Button(button_text="Profile", expand_x=True, key='-PROFILE-')],
+            [sg.Button(button_text="Profile", expand_x=True, disabled=True, key='-PROFILE-')],
             [sg.Button(button_text="Experience", expand_x=True, key='-EXPERIENCE-')],
             [sg.Button(button_text="Education", expand_x=True, key='-EDUCATION-')],
             [sg.Button(button_text="Hobbies", expand_x=True, key='-HOBBIES-')],

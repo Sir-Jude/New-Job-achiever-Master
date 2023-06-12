@@ -20,17 +20,17 @@ while True:
 
     # Process the elements here
     if event == "-PROFILE-":
-        window[f'-Profile-'].update(visible=False)
-        window[f'-Experience-'].update(visible=True)
-        window[f'-TopProfile-'].update(visible=False)
-        window[f'-TopExperience-'].update(visible=True)
-        window[f'-PROFILE-'].update(disabled=True)
-        window[f'-EXPERIENCE-'].update(disabled=False)
-    if event == "-EXPERIENCE-":
         window[f'-Profile-'].update(visible=True)
         window[f'-Experience-'].update(visible=False)
         window[f'-TopProfile-'].update(visible=True)
         window[f'-TopExperience-'].update(visible=False)
+        window[f'-PROFILE-'].update(disabled=True)
+        window[f'-EXPERIENCE-'].update(disabled=False)
+    if event == "-EXPERIENCE-":
+        window[f'-Profile-'].update(visible=False)
+        window[f'-Experience-'].update(visible=True)
+        window[f'-TopProfile-'].update(visible=False)
+        window[f'-TopExperience-'].update(visible=True)
         window[f'-PROFILE-'].update(disabled=False)
         window[f'-EXPERIENCE-'].update(disabled=True)
 
