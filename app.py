@@ -45,6 +45,18 @@ while True:
         window[f"Button-Experience"].update(disabled=True)
         window[f"Top-Experience"].update(visible=True)
         window[f"Content-Experience"].update(visible=True)
-
+    if event == "Button-Save-Profile":
+        window[f"Button-Experience"].update(disabled=False)
+        window[f"Button-Education"].update(disabled=False)
+        window[f"Button-Hobbies"].update(disabled=False)
+        window[f"Button-Skills"].update(disabled=False)
+    if event == "Button-Delete-Profile" or event == "Button-New-Profile":
+        window[f"Button-Profile"].update(disabled=True)
+        window[f"Button-Experience"].update(disabled=True)
+        window[f"Button-Education"].update(disabled=True)
+        window[f"Button-Hobbies"].update(disabled=True)
+        window[f"Button-Skills"].update(disabled=True)
+        window[f"Button-Jobs"].update(disabled=True)
+        window[f"Button-Interviews"].update(disabled=True)
 # Close the window
 window.close()

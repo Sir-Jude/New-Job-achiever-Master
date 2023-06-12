@@ -8,21 +8,21 @@ menu = sg.vtop(
         layout=[
             [
                 sg.Button(
-                    button_text="Profile", expand_x=True, disabled=True, key="-PROFILE-"
+                    button_text="Profile", expand_x=True, disabled=True, key="Button-Profile"
                 )
             ],
-            [sg.Button(button_text="Experience", expand_x=True, key="-EXPERIENCE-")],
-            [sg.Button(button_text="Education", expand_x=True, key="-EDUCATION-")],
-            [sg.Button(button_text="Hobbies", expand_x=True, key="-HOBBIES-")],
-            [sg.Button(button_text="Skills", expand_x=True, key="-SKILLS-")],
-            [sg.Button(button_text="Jobs", expand_x=True, key="-JOBS-")],
-            [sg.Button(button_text="Interviews", expand_x=True, key="-INTERVIEWS-")],
+            [sg.Button(button_text="Experience", expand_x=True, disabled=True, key="Button-Experience")],
+            [sg.Button(button_text="Education", expand_x=True, disabled=True, key="Button-Education")],
+            [sg.Button(button_text="Hobbies", expand_x=True, disabled=True, key="Button-Hobbies")],
+            [sg.Button(button_text="Skills", expand_x=True, disabled=True, key="Button-Skills")],
+            [sg.Button(button_text="Jobs", expand_x=True, disabled=True, key="Button-Jobs")],
+            [sg.Button(button_text="Interviews", expand_x=True, disabled=True, key="Button-Interviews")],
         ],
         element_justification="left",
     )
 )
 
-# PROFILE LAYOUT
+# PROFILE LAYOUT ------------------------------------------------------------
 # Defining the options for profiles combo box
 profiles = ["Adrian George Radu", "Profile 2", "Profile 3"]
 # Defining the top frame
@@ -42,8 +42,8 @@ top_profile = sg.Column(
                     [
                         sg.Text("Select Profile:"),
                         sg.Combo(profiles, key="-Profiles-", readonly=True),
-                        sg.Button("New Profile"),
-                        sg.Button("Delete profile"),
+                        sg.Button(button_text="New Profile", key="Button-New-Profile"),
+                        sg.Button(button_text="Delete Profile", key="Button-Delete-Profile"),
                     ]
                 ],
                 element_justification="right",
@@ -51,7 +51,7 @@ top_profile = sg.Column(
             ),
         ],
     ],
-    key="-TopProfile-",
+    key="Top-Profile",
     visible=True,
 )
 # Defining the content
@@ -66,16 +66,16 @@ content_profile = sg.Column(
         [sg.Text("E-mail pass:"), sg.Input(key="-EmailPass-")],
         [sg.Text("Address:"), sg.Input(key="-Address-")],
         [sg.Text("Language:"), sg.Input(key="-Language-")],
-        [sg.Text("Photo:"), sg.Input(size=(33, 1), key="-FILE-"), sg.FileBrowse()],
-        [sg.Button("Save")],
+        [sg.Text("Photo:"), sg.Input(size=(33, 1), key="Photo-File"), sg.FileBrowse()],
+        [sg.Button(button_text="Save Profile", key="Button-Save-Profile")],
     ],
     element_justification="right",
     expand_x=True,
-    key="-Profile-",
+    key="Content-Profile",
     visible=True,
 )
 
-# EXPERIENCE LAYOUT
+# EXPERIENCE LAYOUT ----------------------------------------------------------
 # Defining the top frame
 top_experience = sg.Column(
     [
@@ -89,13 +89,12 @@ top_experience = sg.Column(
                 element_justification="left",
             ),
             sg.Column(
-                [[sg.Text("Experience of Adrian George Radu")]],
+                [[sg.Text("EXPERIENCE - Profile: Adrian George Radu")]],
                 element_justification="right",
-                expand_x=True,
             ),
         ],
     ],
-    key="-TopExperience-",
+    key="Top-Experience",
     visible=False,
 )
 
@@ -107,14 +106,10 @@ content_experience = sg.Column(
         [sg.Text("Birthday:"), sg.Input(key="-Birthday-")],
         [sg.Text("Sex:"), sg.Input(key="-Sex-")],
         [sg.Text("Phone:"), sg.Input(key="-Phone-")],
-        [sg.Text("E-mail:"), sg.Input(key="-Email-")],
-        [sg.Text("E-mail pass:"), sg.Input(key="-EmailPass-")],
-        [sg.Text("Address:"), sg.Input(key="-Address-")],
-        [sg.Text("Language:"), sg.Input(key="-Language-")],
-        [sg.Button("Save")],
+        [sg.Text("E-mail:"), sg.Input(key="-Email-")]
     ],
     element_justification="right",
     expand_x=True,
-    key="-Experience-",
+    key="Content-Experience",
     visible=False,
 )
