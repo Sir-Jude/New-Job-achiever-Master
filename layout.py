@@ -1,4 +1,5 @@
 import PySimpleGUI as sg
+import textwrap
 
 sg.theme("LightGrey2")
 
@@ -8,15 +9,57 @@ menu = sg.vtop(
         layout=[
             [
                 sg.Button(
-                    button_text="Profile", expand_x=True, disabled=True, key="Button-Profile"
+                    button_text="Profile",
+                    expand_x=True,
+                    disabled=True,
+                    key="Button-Profile",
                 )
             ],
-            [sg.Button(button_text="Experience", expand_x=True, disabled=True, key="Button-Experience")],
-            [sg.Button(button_text="Education", expand_x=True, disabled=True, key="Button-Education")],
-            [sg.Button(button_text="Hobbies", expand_x=True, disabled=True, key="Button-Hobbies")],
-            [sg.Button(button_text="Skills", expand_x=True, disabled=True, key="Button-Skills")],
-            [sg.Button(button_text="Jobs", expand_x=True, disabled=True, key="Button-Jobs")],
-            [sg.Button(button_text="Interviews", expand_x=True, disabled=True, key="Button-Interviews")],
+            [
+                sg.Button(
+                    button_text="Experience",
+                    expand_x=True,
+                    disabled=True,
+                    key="Button-Experience",
+                )
+            ],
+            [
+                sg.Button(
+                    button_text="Education",
+                    expand_x=True,
+                    disabled=True,
+                    key="Button-Education",
+                )
+            ],
+            [
+                sg.Button(
+                    button_text="Hobbies",
+                    expand_x=True,
+                    disabled=True,
+                    key="Button-Hobbies",
+                )
+            ],
+            [
+                sg.Button(
+                    button_text="Skills",
+                    expand_x=True,
+                    disabled=True,
+                    key="Button-Skills",
+                )
+            ],
+            [
+                sg.Button(
+                    button_text="Jobs", expand_x=True, disabled=True, key="Button-Jobs"
+                )
+            ],
+            [
+                sg.Button(
+                    button_text="Interviews",
+                    expand_x=True,
+                    disabled=True,
+                    key="Button-Interviews",
+                )
+            ],
         ],
         element_justification="left",
     )
@@ -43,7 +86,9 @@ top_profile = sg.Column(
                         sg.Text("Select Profile:"),
                         sg.Combo(profiles, key="Combo-Profiles", readonly=True),
                         sg.Button(button_text="New Profile", key="Button-New-Profile"),
-                        sg.Button(button_text="Delete Profile", key="Button-Delete-Profile"),
+                        sg.Button(
+                            button_text="Delete Profile", key="Button-Delete-Profile"
+                        ),
                     ]
                 ],
                 element_justification="right",
@@ -99,17 +144,61 @@ top_experience = sg.Column(
 )
 
 # Defining the content
+some_big_text = "Some description goes here in this area with more blah blah... area with more blah blah..."
 content_experience = sg.Column(
     [
-        [sg.Text("Nameeeee:"), sg.Input(key="-Name-")],
-        [sg.Text("Surname:"), sg.Input(key="-Surname-")],
-        [sg.Text("Birthday:"), sg.Input(key="-Birthday-")],
-        [sg.Text("Sex:"), sg.Input(key="-Sex-")],
-        [sg.Text("Phone:"), sg.Input(key="-Phone-")],
-        [sg.Text("E-mail:"), sg.Input(key="-Email-")]
+        [
+            sg.Frame(
+                layout=[
+                    [sg.Text("Name of the experience goes here", justification='left')],
+                    [sg.Text("Name of the company", justification='left')],
+                    [sg.Text("01.02.2023 - 12.12.2023")],
+                    [sg.Text(textwrap.fill("Some description goes here in this area...",70), expand_x=True)],
+                ],
+                title="",
+                expand_x=True,
+            )
+        ],
+        [
+            sg.Frame(
+                layout=[
+                    [sg.Text("Other name of the experience writen here")],
+                    [sg.Text("Name of the company")],
+                    [sg.Text("01.02.2023 - 12.12.2023")],
+                    [sg.Text(textwrap.fill("Some description goes here in this area...",70), expand_x=True)],
+                ],
+                title="",
+                expand_x=True,
+            )
+        ],
+        [
+            sg.Frame(
+                layout=[
+                    [sg.Text("Name of the experience")],
+                    [sg.Text("Name of the company")],
+                    [sg.Text("01.02.2023 - 12.12.2023")],
+                    [sg.Text(textwrap.fill("Some description goes here in this area...",70), expand_x=True)],
+                ],
+                title="",
+                expand_x=True,
+            )
+        ],
+        [
+            sg.Frame(
+                layout=[
+                    [sg.Text("Name of the experience")],
+                    [sg.Text("Name of the company")],
+                    [sg.Text("01.02.2023 - 12.12.2023")],
+                    [sg.Text(textwrap.fill(some_big_text,70), expand_x=True)],
+                ],
+                title="",
+                expand_x=True,
+            )
+        ],
     ],
     element_justification="right",
-    expand_x=True,
+    expand_x=True, expand_y=True,
     key="Content-Experience",
     visible=False,
+    scrollable=True,  vertical_scroll_only=True
 )

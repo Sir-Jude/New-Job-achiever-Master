@@ -14,15 +14,17 @@ layout = [
     [sg.Frame(layout=[[top_profile, top_experience]], title="", expand_x=True)],
     [
         sg.Frame(
-            layout=[[menu, content_profile, content_experience]],
+            layout=[
+                [menu, sg.vtop(sg.Column([[content_profile, content_experience]],expand_x=True, expand_y=True,))]
+            ],
             title="",
-            expand_x=True,
+            expand_x=True, expand_y=True,
         )
     ],
 ]
 
 # Create the window
-window = sg.Window("Job Achiever Master", layout)
+window = sg.Window("Job Achiever Master", layout, size=(600,400))
 
 # Events loop starting
 while True:
@@ -50,7 +52,7 @@ while True:
         window["Button-Education"].update(disabled=False)
         window["Button-Hobbies"].update(disabled=False)
         window["Button-Skills"].update(disabled=False)
-    if event == "Button-Delete-Profile" or event == "Button-New-Profile":
+    if event == "Button-Delete-Profile" or event == "Button-Delete-Profile":
         window["Button-Profile"].update(disabled=True)
         window["Button-Experience"].update(disabled=True)
         window["Button-Education"].update(disabled=True)
@@ -58,6 +60,6 @@ while True:
         window["Button-Skills"].update(disabled=True)
         window["Button-Jobs"].update(disabled=True)
         window["Button-Interviews"].update(disabled=True)
-        window["Combo-Profiles"].update(values=['Blabla 1','Blaba 2'])
+        window["Combo-Profiles"].update(values=["Blabla 1", "Blaba 2"])
 # Close the window
 window.close()
