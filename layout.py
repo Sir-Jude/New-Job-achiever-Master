@@ -190,9 +190,24 @@ content_experience = sg.Column(
                     [sg.Text("Name of the company")],
                     [sg.Text("01.02.2023 - 12.12.2023")],
                     [sg.Text(textwrap.fill(some_big_text,70), expand_x=True)],
+                    [sg.Button(button_text="Delete Experience", key="Button-Delete-Experience")],
                 ],
                 title="",
                 expand_x=True,
+            )
+        ],
+        [
+            sg.Frame(
+                layout=[
+                    [sg.Text("Title:"), sg.Input(key="-Exp-Title-")],
+                    [sg.Text("Company:"), sg.Input(key="-Exp-Company-")],
+                    [sg.Text("Start:"), sg.Input(key="-Exp-Start-", size=(None, 10)), sg.Text("End:"), sg.Input(key="-Exp-End-", size=(None, 10))],
+                    [sg.Text("Description:"), sg.Input(key="-Exp-Description-")],
+                    [sg.Button(button_text="Save Experience", key="Button-Save-Experience")],
+                ],
+                title="",
+                expand_x=True,
+                element_justification="right",
             )
         ],
     ],
